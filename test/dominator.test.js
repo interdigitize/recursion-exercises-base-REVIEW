@@ -15,6 +15,7 @@ describe('dominator', () => {
   describe('getElementById()', () => {
     it('finds a valid id', () => {
       const el = getElementById(document.body, 'pushpop');
+      console.log(el);
       expect(el.id).toEqual('pushpop');
       expect(el.textContent).toEqual('Push/pop');
     });
