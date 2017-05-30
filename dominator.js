@@ -21,6 +21,16 @@ const getElementsByClassName = function(root, className) {
 };
 
 const getElementsByTagName = function(root, tagName) {
+  // flatten the tree
+  var flattenedTreeArr = flattenTreeToArray(root);
+  // iterate through the tree
+  return _.filter(flattenedTreeArr, el => {
+    //check if an element tagName matches the desired tagName
+    if(el.tagName === tagName){
+      //return the element
+      return el;
+    }
+  });
 };
 
 module.exports = {
