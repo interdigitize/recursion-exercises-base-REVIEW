@@ -9,48 +9,19 @@ const visitAllNodes = function(node, callback) {
   callback(node);
 
   // iterate through the array and call the callback on each child
-  return children.forEach(function(node){
-    callback(node);
-  });
-
+  return children.forEach( child => visitAllNodes(child, callback) );
 };
 
 const flattenTreeToArray = function(node) {
-  // Hint: Use visitAllNodes()
-  // Your code here
+  var flattenedArr = [];
+  var callback = function(child){
+    return flattenedArr.push(child)
+  }
+  visitAllNodes(node, callback);
+  return flattenedArr;
 };
 
 module.exports = {
   visitAllNodes: visitAllNodes,
   flattenTreeToArray: flattenTreeToArray
 };
-
-
-// var test = [
-//   something: {
-//     name: 'thing',
-//     color: 'neutral',
-//     type: 'generic',
-//     numbers: [1, 5, 3],
-//     aChild: {
-//       name: 'thing',
-//       color: 'neutral',
-//       type: 'generic',
-//       expression: 'cool'
-//     }
-//   },
-//   another: {
-//     name: 'anada',
-//     color: 'blue',
-//     type: 'interesting',
-//     numbers: [2, 3],
-//     aChild: {
-//       name: 'twoBit',
-//       color: 'seafoam',
-//       type: 'interesting',
-//       expression: 'sick'
-//     }
-//   }
-// ];
-//
-// visitAllNodes()
