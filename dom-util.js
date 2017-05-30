@@ -13,11 +13,15 @@ const visitAllNodes = function(node, callback) {
 };
 
 const flattenTreeToArray = function(node) {
+  // create an array variable to add children to
   var flattenedArr = [];
+  // set a function that adds a child element to the array above
   var callback = function(child){
     return flattenedArr.push(child)
   }
+  // pass flattenTreeToArray root node and callback to the visitAllNodes function
   visitAllNodes(node, callback);
+  // return the array
   return flattenedArr;
 };
 
