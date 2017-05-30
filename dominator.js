@@ -9,11 +9,18 @@ const getElementById = function(root, id) {
 };
 
 const getElementsByClassName = function(root, className) {
-  // Your code here
+  //flatten the tree
+  var flattenedTreeArr = flattenTreeToArray(root);
+  // iterate through the tree
+  return _.filter(flattenedTreeArr, el => {
+    //check if an element className matches the desired className
+    if(el.className && el.className.indexOf(className) !== -1) {
+      return el;
+    };
+  });
 };
 
 const getElementsByTagName = function(root, tagName) {
-  // Your code here
 };
 
 module.exports = {
